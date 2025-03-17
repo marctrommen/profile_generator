@@ -3,3 +3,5 @@ Lib/
 Scripts/
 _www/
 pyvenv.cfg
+html/portfolio.html
+src/__pycache__
