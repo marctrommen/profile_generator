@@ -1,0 +1,10 @@
+skills : {
+	"skillgroupname" : {
+		"skillname" : int_value,
+		"skillname" : int_value
+	},
+	"skillgroupname" : {
+		"skillname" : int_value,
+		"skillname" : int_value
+	}
+}
