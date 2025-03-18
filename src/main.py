@@ -5,6 +5,7 @@ from config import init
 import os
 import shutil
 import json
+from data_loader import DataLoader
 
 # -----------------------------------------------------------------------------
 # initialize main's data structure
@@ -26,42 +27,10 @@ def _clean():
 
 
 # -----------------------------------------------------------------------------
-def _load_templates():
-    print("Load HTML templates")
-    for (file_name, template_name)  in data["CONFIG"]['TEMPLATE_FILES']:
-        file_name = os.path.join(data["CONFIG"]["TEMPLATES_DIR"], file_name)
-        with open(file_name, 'r') as fileObject:
-            data[template_name] = fileObject.read()
-
-
-# -----------------------------------------------------------------------------
-def _load_projects(all_projects:bool):
-    print("Load JSON of", ("all" if all_projects else "top"), "projects data")
-    if all_projects:
-        file_name = data["CONFIG"]["ALL_PROJECTS_JSON_FILE"]
-    else:
-        file_name = data["CONFIG"]["TOP_PROJECTS_JSON_FILE"]
-    file_name = os.path.join(data["CONFIG"]["DATA_DIR"], file_name)
-    with open(file_name, 'r') as fileObject:
-        json_data = json.load(fileObject)
-        if not json_data:
-            raise RuntimeError("JSON data should not be empty!")
-        if all_projects:
-            data["ALL_PROJECTS_DATA"] = json_data
-        else:
-            data["TOP_PROJECTS_DATA"] = json_data
-
-
-# -----------------------------------------------------------------------------
-def _load_skills():
-    print("Load JSON of skills data")
-    file_name = os.path.join(data["CONFIG"]["DATA_DIR"], data["CONFIG"]["SKILLS_JSON_FILE"])
-    with open(file_name, 'r') as fileObject:
-        json_data = json.load(fileObject)
-        if not json_data:
-            raise RuntimeError("JSON data should not be empty!")
-        data["SKILLS_DATA"] = json_data
-
+def _load_data_from_files():
+    print("Load data from files")
+    loader = DataLoader()
+    loader.load_data(data)
 
 # -----------------------------------------------------------------------------
 def _handle_project_list(all_projects:bool):
@@ -72,17 +41,41 @@ def _handle_project_list(all_projects:bool):
         project_list = data["TOP_PROJECTS_DATA"]
 
     for project_item in project_list:
-        
+        html = _handle_project_item(item=project_item)
+
+# -----------------------------------------------------------------------------
+def _handle_project_item(item):
+    print("handle project item")
+    html = ""
+    time_range = "{month_from:02d}/{year_from} - {month_to:02d}/{year_to}".format(
+        month_from=item["project_start_month"], 
+        year_from=item["project_start_year"], 
+        month_to=item["project_end_month"], 
+        year_to=item["project_end_year"]
+    )
+
+    snippet_parameters = dict(
+        TIME_RANGE=time_range,
+
+        project_name=item["project_name"],
+        project_description=item["project_description"],
+        project_link=item["project_link"],
+        project_image=item["project_image"],
+        project_technologies=item["project_technologies"],
+        project_tasks=item["project_tasks"]
+    )
+    
+    html = data["PROJECT_TASK_TEMPLATE"].format(**snippet_parameters)
+
+    return html
+
 
 # -----------------------------------------------------------------------------
 def main():
     print("Main")
     _init()
     _clean()
-    _load_templates()
-    _load_projects(all_projects=True)
-    _load_projects(all_projects=False)
-    _load_skills()
+    _load_data_from_files()
 
 
 # -----------------------------------------------------------------------------
