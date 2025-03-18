@@ -5,3 +5,4 @@ _www/
 pyvenv.cfg
 html/portfolio.html
 src/__pycache__
+.vscode/
