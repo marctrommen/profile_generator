@@ -30,7 +30,9 @@ def init():
         ("about_section.html", "ABOUT_TEMPLATE"),
         ("skills_section.html", "SKILLS_TEMPLATE"),
         ("top_projects_section.html", "TOP_PROJECTS_TEMPLATE"),
-        ("all_projects_section.html", "ALL_PROJECTS_TEMPLATE")
+        ("all_projects_section.html", "ALL_PROJECTS_TEMPLATE"),
+        ("project_task.html", "PROJECT_TASK_TEMPLATE"),
+        #("", "")
     ]
     config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
     config["TOP_PROJECTS_JSON_FILE"] = "top_project_list.json"
