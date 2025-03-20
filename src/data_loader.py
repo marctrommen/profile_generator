@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import logging
+logger = logging.getLogger("myapp.DataLoader")
+
 import os
 import json
 
@@ -25,12 +28,9 @@ class DataLoader:
         ALL_PROJECTS_DATA: dict
         TOP_PROJECTS_DATA: dict
         SKILLS_DATA: dict
-        <TEMPLATE_NAME>*: str
+        TEMPLATES: dict
+        ["TEMPLATES"]<TEMPLATE_NAME>*: str
     """
-
-
-    def __init__(self):
-        pass
 
 
     # -----------------------------------------------------------------------------
@@ -41,8 +41,13 @@ class DataLoader:
         Internally HTML templates, projects data and skills data are loaded 
         in this sequence.
         """
-        print("Load data")
+        logger.debug("Load data")
         self.data = data
+        self.data["JSON"] = {}
+        self.data["JSON"]["ALL_PROJECTS_DATA"] = {}
+        self.data["JSON"]["TOP_PROJECTS_DATA"] = {}
+        self.data["JSON"]["SKILLS_DATA"] = {}
+        self.data["TEMPLATES"] = {}
         self._load_html_templates()
         self._load_projects(all_projects=True)
         self._load_projects(all_projects=False)
@@ -51,16 +56,17 @@ class DataLoader:
 
     # -----------------------------------------------------------------------------
     def _load_html_templates(self):
-        print("Load HTML templates")
+        logger.debug("Load HTML templates")
+
         for (file_name, template_name)  in self.data["CONFIG"]['TEMPLATE_FILES']:
             file_name = os.path.join(self.data["CONFIG"]["TEMPLATES_DIR"], file_name)
             with open(file_name, 'r') as fileObject:
-                self.data[template_name] = fileObject.read()
+                self.data["TEMPLATES"][template_name] = fileObject.read()
 
 
     # -----------------------------------------------------------------------------
     def _load_projects(self, all_projects:bool):
-        print("Load JSON of", ("all" if all_projects else "top"), "projects data")
+        logger.debug("Load JSON of", ("all" if all_projects else "top"), "projects data")
         if all_projects:
             file_name = self.data["CONFIG"]["ALL_PROJECTS_JSON_FILE"]
         else:
@@ -71,17 +77,17 @@ class DataLoader:
             if not json_data:
                 raise RuntimeError("JSON data should not be empty!")
             if all_projects:
-                self.data["ALL_PROJECTS_DATA"] = json_data
+                self.data["JSON"]["ALL_PROJECTS_DATA"] = json_data
             else:
-                self.data["TOP_PROJECTS_DATA"] = json_data
+                self.data["JSON"]["TOP_PROJECTS_DATA"] = json_data
 
 
     # -----------------------------------------------------------------------------
     def _load_skills(self):
-        print("Load JSON of skills data")
+        logger.debug("Load JSON of skills data")
         file_name = os.path.join(self.data["CONFIG"]["DATA_DIR"], self.data["CONFIG"]["SKILLS_JSON_FILE"])
         with open(file_name, 'r') as fileObject:
             json_data = json.load(fileObject)
             if not json_data:
                 raise RuntimeError("JSON data should not be empty!")
-            self.data["SKILLS_DATA"] = json_data
+            self.data["JSON"]["SKILLS_DATA"] = json_data

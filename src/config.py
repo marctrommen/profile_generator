@@ -5,9 +5,13 @@ import os
 import datetime
 import locale
 
-# start configuration here
+import logging
+logger = logging.getLogger("myapp.configuration")
 
-def init():
+def configuration():
+    """Global configuration of the application."""
+
+    logger.debug("global configuration started")
     config = {}
     locale.setlocale(locale.LC_ALL, '')
     config['GENERATOR_STARTED'] = datetime.datetime.now()
@@ -29,17 +33,26 @@ def init():
         ("main.html", "MAIN_TEMPLATE"),
         ("about_section.html", "ABOUT_TEMPLATE"),
         ("skills_section.html", "SKILLS_TEMPLATE"),
-        ("top_projects_section.html", "TOP_PROJECTS_TEMPLATE"),
-        ("all_projects_section.html", "ALL_PROJECTS_TEMPLATE"),
-        ("project_task.html", "PROJECT_TASK_TEMPLATE"),
-        #("", "")
+        ("skill_group.html", "SKILLS_GROUP_TEMPLATE"),
+        ("skill_item.html", "SKILLS_GROUP_ITEM_TEMPLATE"),
+        ("projects_section.html", "PROJECTS_TEMPLATE"),
+        ("project_item.html", "PROJECT_ITEM_TEMPLATE"),
+        ("project_item_branch.html", "PROJECT_ITEM_BRANCH_TEMPLATE"),
+        ("project_item_company_client.html", "PROJECT_ITEM_COMPANY_CLIENT_TEMPLATE"),
+        ("project_item_methods.html", "PROJECT_ITEM_METHODS_TEMPLATE"),
+        ("project_item_roles.html", "PROJECT_ITEM_ROLES_TEMPLATE"),
+        ("project_item_tasks.html", "PROJECT_ITEM_TASKS_TEMPLATE"),
+        ("project_item_task.html", "PROJECT_ITEM_TASK_TEMPLATE"),
+        ("project_item_time_range.html", "PROJECT_ITEM_TIME_RANGE_TEMPLATE"),
+        ("project_item_tools.html", "PROJECT_ITEM_TOOLS_TEMPLATE")
     ]
     config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
     config["TOP_PROJECTS_JSON_FILE"] = "top_project_list.json"
     config["SKILLS_JSON_FILE"] = "skills.json"
 
+    logger.debug("global configuration done")
     return config
 
 # -----------------------------------------------------------------------------
 if __name__ == '__main__':
-    raise Exception("This is a configuration module and should not be run directly")
+    raise RuntimeError("This is a configuration module and should not be run directly")
