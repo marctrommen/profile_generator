@@ -59,6 +59,7 @@ header .read-more{
     font-weight: 500;
     border-radius: 1000px;
     padding: .5em 1.25em;
+    margin-top: 10px;
     text-decoration: none;
     transition: 200ms ease;
     cursor: pointer;
@@ -198,7 +199,8 @@ footer a{
 footer a{
     color: var(--text-color);
 }
-@media(max-width: 1000px){   
+
+@media(max-width: 800px){   
     footer .grid-container{
         display: flex;
         flex-direction: column;
@@ -207,5 +209,13 @@ footer a{
     }
     footer h3{
         margin-top: 50px;
+    }
+}
+
+@media(max-width: 650px){   
+    header .read-more{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
     }
 }
