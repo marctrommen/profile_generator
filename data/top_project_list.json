@@ -1,117 +1,128 @@
 {
     "profil_01": {
-        "employed_company": "requisimus DT GmbH",
-        "project_name": "LIBS",
-        "project_branch": "Automotive",
+        "employed_company": "The best employer ever",
+        "project_name": "The Big Laugh",
+        "project_branch": "Entertainment",
         "project_start_month": 6,
         "project_start_year": 2023,
         "project_end_month": 7,
         "project_end_year": 2024,
-        "project_company_client": "Mercedes AG",
+        "project_company_client": "The best client ever",
         "project_roles": [
-            "Projektleiter",
-            "Entwickler",
-            "Consultant"
+            "Leader of the pack",
+            "Cooker",
+            "Clown"
         ],
-        "project_description": "Mikro-Controller basierende Laseransteuerung mit Auswertung und Visualisierung für gepulste Laseranwendung (LIBS, entspricht Laser-induced Breakdown Spectroscopy).",
+        "project_description": "The Big Laugh is a project that will make you laugh.",
         "project_tasks": [
-            "Anforderungsanalyse",
-            "Robusten Anlagenaufbau für den halbautomatischen Kleinserienbetrieb gewährleisten.",
-            "Auswählen aller Hardware-Komponenten, wie Laser, Spektrometer, Delay Generator und Bauteile für diskret aufgebaute Schnittstellen.",
-            "Definieren und Umsetzen aller Schnittstellen als Hardware und Software.",
-            "Konzeption und Umsetzung einer Python-Applikation zur Ansteuerung aller Komponenten und Visualisieren und Auswerten der Messdurchläufe.",
-            "Technische Projektleitung inkl. Steuern und Unterstützen der HW- und SW-Entwicklung.",
-            "Erstellen der Betriebsanleitung.",
-            "Labortests mit Oszilloskop zum Nachweis der zeitlichen und signalelektrischen Anforderungen im Nanosekundenbereich."
+            "Requirements Analysis",
+            "Project Management",
+            "Conceptual Design",
+            "Implementation of fun and jokes",
+            "Cooking for the team",
+            "Cleaning the office"
         ],
         "project_tools": [
-            "Arduino DUE",
-            "Python",
-            "Socket-Kommunikation",
-            "RS-232 Kommunikation",
-            "Python Multi-Threading",
-            "Python Qt5 UI"
+            "Fork",
+            "Knife",
+            "Spoon"
+        ],
+        "project_methods": [
+            "Eating",
+            "Agile bathing",
+            "Reading Newspapers"
+        ],
+        "buzzwords":[
+            "fun",
+            "jokes",
+            "laugh",
+            "entertainment",
+            "cooking",
+            "cleaning"
         ]
     },
     "profil_02": {
-        "employed_company": "requisimus DT GmbH",
-        "project_name": "IT-Van / V-Plan, Versuchsfahrtenplanung",
-        "project_branch": "Automotive",
+        "employed_company": "The best employer ever",
+        "project_name": "The Big Laugh",
+        "project_branch": "Entertainment",
         "project_start_month": 6,
         "project_start_year": 2023,
-        "project_end_month": 6,
+        "project_end_month": 7,
         "project_end_year": 2024,
-        "project_company_client": "Mercedes AG",
+        "project_company_client": "The best client ever",
         "project_roles": [
-            "Projektleiter",
-            "Entwickler",
-            "Consultant"
+            "Leader of the pack",
+            "Cooker",
+            "Clown"
         ],
-        "project_description": "Intranet Web-Applikation für die Ressourcenplanung von Versuchsfahrten inkl. Schnittstellen zu internen Systemen",
+        "project_description": "The Big Laugh is a project that will make you laugh.",
         "project_tasks": [
-            "Aufwandsanalyse",
-            "Aufwandsschätzung",
-            "Angebotserstellung",
-            "Technische Projektleitung",
-            "Konzeption",
-            "Steuerung externer Entwickler",
-            "Unterstützung bei der Mercedes-internen Beantragung aller Ressourcen und Zugangsberechtigungen",
-            "Auswahlprozess für externen Entwickler",
-            "Vorgaben zu Coding-Guidelines, Software-Architektur, Build- und Deploy-Prozess",
-            "GIT Server Installation"
+            "Requirements Analysis",
+            "Project Management",
+            "Conceptual Design",
+            "Implementation of fun and jokes",
+            "Cooking for the team",
+            "Cleaning the office"
         ],
         "project_tools": [
-            "MS C#",
-            "MS Dot-NET 8",
-            "MS-SQL",
-            "JavaScript",
-            "Svelte mit Framework-7",
-            "GIT"
+            "Fork",
+            "Knife",
+            "Spoon"
+        ],
+        "project_methods": [
+            "Eating",
+            "Agile bathing",
+            "Reading Newspapers"
+        ],
+        "buzzwords":[
+            "fun",
+            "jokes",
+            "laugh",
+            "entertainment",
+            "cooking",
+            "cleaning"
         ]
     },
     "profil_03": {
-        "employed_company": "requisimus DT GmbH",
-        "project_name": "CI-, CD-Prozess und Tool Chain für Embedded Entwicklung",
-        "project_branch": "Internes Projekt",
-        "project_start_month": 9,
+        "employed_company": "The best employer ever",
+        "project_name": "The Big Laugh",
+        "project_branch": "Entertainment",
+        "project_start_month": 6,
         "project_start_year": 2023,
-        "project_end_month": 5,
+        "project_end_month": 7,
         "project_end_year": 2024,
+        "project_company_client": "The best client ever",
         "project_roles": [
-            "Projektleiter",
-            "Entwickler",
-            "Consultant"
+            "Leader of the pack",
+            "Cooker",
+            "Clown"
         ],
-        "project_description": "Hochflexible, TISAX-konforme Tool Chain für die Embedded Entwicklung im Intranet als Show Case spezifizieren und installieren.",
+        "project_description": "The Big Laugh is a project that will make you laugh.",
         "project_tasks": [
             "Requirements Analysis",
-            "Projektleitung",
-            "Konzeption",
-            "GIT Server Installation",
-            "Linux Benutzer und Rollen definieren und konfigurieren",
-            "Netzwerkkonfiguration",
-            "Geeignete Softwarekomponenten auswählen und Alternativenkatalog erstellen",
-            "LINUX Backup-Prozess definieren und implementieren",
-            "Vorgaben zu Coding-Guidelines, Software-Architektur, Build- und Deploy-Prozess definiert"
+            "Project Management",
+            "Conceptual Design",
+            "Implementation of fun and jokes",
+            "Cooking for the team",
+            "Cleaning the office"
         ],
         "project_tools": [
-            "MS Office",
-            "MS Teams Tasks",
-            "MS Teams Notes",
-            "GIT Server",
-            "Jenkins",
-            "Bash",
-            "Python",
-            "Power Shell",
-            "Docker",
-            "Debian Linux",
-            "Windows 11",
-            "Arduino"
+            "Fork",
+            "Knife",
+            "Spoon"
         ],
         "project_methods": [
-            "Kanban",
-            "Agile SW-Entwicklung",
-            "TISAX"
+            "Eating",
+            "Agile bathing",
+            "Reading Newspapers"
+        ],
+        "buzzwords":[
+            "fun",
+            "jokes",
+            "laugh",
+            "entertainment",
+            "cooking",
+            "cleaning"
         ]
     }
 }
