@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""Configuration module for the application.
+This module contains the global configuration for the application.
+It sets up the project directories, template files, and other constants.
+It also initializes the logging and locale settings.
+
+As this file is just a template to store it in the repository, it needs to be copied and renamed to
+"config.py" befor running the application!
+"""
+
 import os
 import datetime
 import locale
@@ -21,7 +30,7 @@ def configuration():
 
     aPath = os.path.realpath(__file__)
     aPath = os.path.dirname(aPath)
-    configPath = os.path.normpath(aPath)
+    aPath = os.path.normpath(aPath)
     aPath = os.path.join(aPath, "..")
     aPath = os.path.normpath(aPath)
     config["PROJECT_ROOT_DIR"] = aPath
