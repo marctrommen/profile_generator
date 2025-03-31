@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-logger = logging.getLogger("myapp.PortfolioBuilder")
-
 from projects_section_builder import ProjectsSectionBuilder
 from skills_section_builder import SkillsSectionBuilder
 
+import logging
+logger = logging.getLogger("myapp.PortfolioBuilder")
 
+
+# -----------------------------------------------------------------------------
 class PortfolioBuilder:
     """
     Build the portfolio from the data structure.
@@ -25,9 +26,9 @@ class PortfolioBuilder:
         all projects section, project task and skill item are built in this sequence.
         """
         logger.debug("Build portfolio")
-        if (data == None or 
-            projects_section_builder == None or 
-            skills_section_builder == None):
+        if (data is None or 
+            projects_section_builder is None or 
+            skills_section_builder is None):
             raise ValueError("Invalid input parameters!")
         
         self.data = data
@@ -107,16 +108,16 @@ class PortfolioBuilder:
     def _build_main_page(self):
         logger.debug("Build main page")
 
-        if not "TOP_PROJECTS_SECTION" in self.data["HTML"]:
+        if "TOP_PROJECTS_SECTION" not in self.data["HTML"]:
             raise Exception("Top projects section is missing")
         
-        if not "ALL_PROJECTS_SECTION" in self.data["HTML"]:
+        if "ALL_PROJECTS_SECTION" not in self.data["HTML"]:
             raise Exception("All projects section is missing")
         
-        if not "SKILLS_SECTION" in self.data["HTML"]:
+        if "SKILLS_SECTION" not in self.data["HTML"]:
             raise Exception("Skills section is missing")
         
-        if not "ABOUT_TEMPLATE" in self.data["TEMPLATES"]:
+        if "ABOUT_TEMPLATE" not in self.data["TEMPLATES"]:
             raise Exception("About section is missing")
         
         snippet_paramaters = dict(

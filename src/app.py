@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-logger = logging.getLogger("myapp.Application")
-
 import os
 import shutil
 from data_loader import DataLoader
@@ -11,6 +8,11 @@ from portfolio_builder import PortfolioBuilder
 from skills_section_builder import SkillsSectionBuilder
 from projects_section_builder import ProjectsSectionBuilder
 
+import logging
+logger = logging.getLogger("myapp.Application")
+
+
+# -----------------------------------------------------------------------------
 class Application:
     """
     Application class to run the build process.

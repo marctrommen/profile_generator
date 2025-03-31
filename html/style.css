@@ -91,7 +91,7 @@ header .read-more:hover{
     flex-wrap: wrap;
 }
 .skill-container{
-    width: 400px;
+    width: 550px;
     max-width: 100%;
     border: 10px solid var(--primary-color);
     border-top: none;
@@ -162,6 +162,11 @@ details .text-container{
 }
 details .text-container p{
     padding-bottom: 30px;
+}
+details .text-container p a{
+    color: var(--text-color);
+	background-color: var(--accent-color);
+	text-decoration: none;
 }
 details .text-container dl dd{
     margin-left: 30px;

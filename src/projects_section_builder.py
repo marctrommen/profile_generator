@@ -5,6 +5,7 @@ import logging
 logger = logging.getLogger("myapp.PortfolioBuilder")
 
 
+# -----------------------------------------------------------------------------
 class ProjectsSectionBuilder():
     """Documentation TO BE DONE!"""    
 
@@ -20,7 +21,7 @@ class ProjectsSectionBuilder():
         """
         logger.debug("build method started")
 
-        if (projects == None or templates == None or heading == ""):
+        if (projects is None or templates is None or heading == ""):
             raise ValueError("Invalid input parameters!")
         
         self.projects = projects
@@ -97,7 +98,7 @@ class ProjectsSectionBuilder():
     def _project_description(self, project: str):
         logger.debug("Build project description")
 
-        if not "project_description" in self.projects[project]:
+        if "project_description" not in self.projects[project]:
             return ""
         
         return self.projects[project]["project_description"]
@@ -107,7 +108,7 @@ class ProjectsSectionBuilder():
     def _company_client(self, project: str):
         logger.debug("Build company client")
 
-        if not "project_company_client" in self.projects[project]:
+        if "project_company_client" not in self.projects[project]:
             return ""
 
         snippet_parameters = dict(
@@ -121,7 +122,7 @@ class ProjectsSectionBuilder():
     def _branch(self, project: dict):
         logger.debug("Build branch")
 
-        if not "project_branch" in self.projects[project]:
+        if "project_branch" not in self.projects[project]:
             return ""
 
         snippet_parameters = dict(
@@ -135,7 +136,7 @@ class ProjectsSectionBuilder():
     def _roles_list(self, project: dict):
         logger.debug("Build roles list")
 
-        if not "project_roles" in self.projects[project]:
+        if "project_roles" not in self.projects[project]:
             return ""
         elif len(self.projects[project]["project_roles"]) == 0:
             return ""
@@ -151,7 +152,7 @@ class ProjectsSectionBuilder():
     def _tasks_list(self, project: dict):
         logger.debug("Build tasks list")
 
-        if not "project_tasks" in self.projects[project]:
+        if "project_tasks" not in self.projects[project]:
             return ""
         elif len(self.projects[project]["project_tasks"]) == 0:
             return ""
@@ -178,7 +179,7 @@ class ProjectsSectionBuilder():
     def _tools_list(self, project: dict):
         logger.debug("Build tools list")
 
-        if not "project_tools" in self.projects[project]:
+        if "project_tools" not in self.projects[project]:
             return ""
         elif len(self.projects[project]["project_tools"]) == 0:
             return ""
@@ -194,7 +195,7 @@ class ProjectsSectionBuilder():
     def _methods_list(self, project: dict):
         logger.debug("Build methods list")
 
-        if not "project_methods" in self.projects[project]:
+        if "project_methods" not in self.projects[project]:
             return ""
         elif len(self.projects[project]["project_methods"]) == 0:
             return ""

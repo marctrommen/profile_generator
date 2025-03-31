@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-from logging_config import setup_logging
-setup_logging()
-
-logger = logging.getLogger("myapp")
 
 import config
 from data_loader import DataLoader
@@ -14,8 +9,17 @@ from skills_section_builder import SkillsSectionBuilder
 from projects_section_builder import ProjectsSectionBuilder
 from app import Application
 
+import logging
+from logging_config import setup_logging
+setup_logging()
+
+logger = logging.getLogger("myapp")
+
+
 # -----------------------------------------------------------------------------
-def main():
+def main() -> None:
+    """Main function to run the application.
+    """
     configuration = config.configuration()
     data_loader = DataLoader()
     portfolio_builder = PortfolioBuilder()

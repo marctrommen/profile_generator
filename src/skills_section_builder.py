@@ -4,6 +4,8 @@
 import logging
 logger = logging.getLogger("myapp.SkillsSectionBuilder")
 
+
+# -----------------------------------------------------------------------------
 class SkillsSectionBuilder:
     """Documentation TO BE DONE!"""
 

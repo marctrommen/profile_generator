@@ -6,6 +6,8 @@ logger = logging.getLogger("myapp.DataLoader")
 
 import os
 import json
+from copy import deepcopy
+
 
 class DataLoader:
     """
@@ -49,9 +51,9 @@ class DataLoader:
         self.data["JSON"]["SKILLS_DATA"] = {}
         self.data["TEMPLATES"] = {}
         self._load_html_templates()
-        self._load_projects(all_projects=True)
-        self._load_projects(all_projects=False)
+        self._load_projects()
         self._load_skills()
+        self._deepcopy_top_projects()
 
 
     # -----------------------------------------------------------------------------
@@ -65,21 +67,24 @@ class DataLoader:
 
 
     # -----------------------------------------------------------------------------
-    def _load_projects(self, all_projects:bool):
-        logger.debug("Load JSON of", ("all" if all_projects else "top"), "projects data")
-        if all_projects:
-            file_name = self.data["CONFIG"]["ALL_PROJECTS_JSON_FILE"]
-        else:
-            file_name = self.data["CONFIG"]["TOP_PROJECTS_JSON_FILE"]
+    def _load_projects(self):
+        logger.debug("Load JSON of all projects data")
+        file_name = self.data["CONFIG"]["ALL_PROJECTS_JSON_FILE"]
         file_name = os.path.join(self.data["CONFIG"]["DATA_DIR"], file_name)
         with open(file_name, 'r') as fileObject:
             json_data = json.load(fileObject)
             if not json_data:
                 raise RuntimeError("JSON data should not be empty!")
-            if all_projects:
-                self.data["JSON"]["ALL_PROJECTS_DATA"] = json_data
-            else:
-                self.data["JSON"]["TOP_PROJECTS_DATA"] = json_data
+            self.data["JSON"]["ALL_PROJECTS_DATA"] = json_data
+
+
+    # -----------------------------------------------------------------------------
+    def _deepcopy_top_projects(self):
+        logger.debug("deepcopy JSON partially from all projects data")
+        if "TOP_PROJECTS_NAME_LIST" in self.data["CONFIG"]:
+            if len(self.data["CONFIG"]["TOP_PROJECTS_NAME_LIST"]) > 0:
+                for top_project_name in self.data["CONFIG"]["TOP_PROJECTS_NAME_LIST"]:
+                    self.data["JSON"]["TOP_PROJECTS_DATA"][top_project_name] = deepcopy(self.data["JSON"]["ALL_PROJECTS_DATA"][top_project_name])
 
 
     # -----------------------------------------------------------------------------
