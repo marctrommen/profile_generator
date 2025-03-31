@@ -8,3 +8,6 @@ src/__pycache__
 src/config.py
 .vscode/
 app.log
+data/out_list.json
+data/skills_neu.json
+data/skills_backup.json
