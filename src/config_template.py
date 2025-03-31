@@ -56,7 +56,7 @@ def configuration():
         ("project_item_tools.html", "PROJECT_ITEM_TOOLS_TEMPLATE")
     ]
     config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
-    config["TOP_PROJECTS_JSON_FILE"] = "top_project_list.json"
+    config["TOP_PROJECTS_NAME_LIST"] = ["profil_1"]
     config["SKILLS_JSON_FILE"] = "skills.json"
 
     logger.debug("global configuration done")
