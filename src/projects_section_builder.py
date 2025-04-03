@@ -10,7 +10,7 @@ class ProjectsSectionBuilder():
     """Documentation TO BE DONE!"""    
 
     # -----------------------------------------------------------------------------
-    def build(self, projects: dict, templates: dict, heading: str):
+    def build(self, projects: dict, templates: dict, heading: str) -> str:
         """Build the project list section of the portfolio page out of the
         projects data structure.
         
@@ -45,7 +45,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _build_project(self, project: str, project_counter: int):
+    def _build_project(self, project: str, project_counter: int) -> str:
         logger.debug("_build_project started")
         html_text = ""
         
@@ -68,7 +68,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _time_range(self, project: str):
+    def _time_range(self, project: str) -> str:
         logger.debug("Build time range")
         time_range = ""
 
@@ -95,7 +95,7 @@ class ProjectsSectionBuilder():
     
 
     # -----------------------------------------------------------------------------
-    def _project_description(self, project: str):
+    def _project_description(self, project: str) -> str:
         logger.debug("Build project description")
 
         if "project_description" not in self.projects[project]:
@@ -105,7 +105,7 @@ class ProjectsSectionBuilder():
     
 
     # -----------------------------------------------------------------------------
-    def _company_client(self, project: str):
+    def _company_client(self, project: str) -> str:
         logger.debug("Build company client")
 
         if "project_company_client" not in self.projects[project]:
@@ -119,7 +119,7 @@ class ProjectsSectionBuilder():
     
 
     # -----------------------------------------------------------------------------
-    def _branch(self, project: dict):
+    def _branch(self, project: dict) -> str:
         logger.debug("Build branch")
 
         if "project_branch" not in self.projects[project]:
@@ -133,7 +133,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _roles_list(self, project: dict):
+    def _roles_list(self, project: dict) -> str:
         logger.debug("Build roles list")
 
         if "project_roles" not in self.projects[project]:
@@ -149,7 +149,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _tasks_list(self, project: dict):
+    def _tasks_list(self, project: dict) -> str:
         logger.debug("Build tasks list")
 
         if "project_tasks" not in self.projects[project]:
@@ -176,7 +176,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _tools_list(self, project: dict):
+    def _tools_list(self, project: dict) -> str:
         logger.debug("Build tools list")
 
         if "project_tools" not in self.projects[project]:
@@ -192,7 +192,7 @@ class ProjectsSectionBuilder():
 
 
     # -----------------------------------------------------------------------------
-    def _methods_list(self, project: dict):
+    def _methods_list(self, project: dict) -> str:
         logger.debug("Build methods list")
 
         if "project_methods" not in self.projects[project]:

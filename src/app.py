@@ -7,6 +7,9 @@ from data_loader import DataLoader
 from portfolio_builder import PortfolioBuilder
 from skills_section_builder import SkillsSectionBuilder
 from projects_section_builder import ProjectsSectionBuilder
+from header_section_builder import HeaderSectionBuilder
+from about_section_builder import AboutSectionBuilder
+from footer_section_builder import FooterSectionBuilder
 
 import logging
 logger = logging.getLogger("myapp.Application")
@@ -23,19 +26,28 @@ class Application:
                  configuration: dict, 
                  data_loader: DataLoader, 
                  portfolio_builder: PortfolioBuilder, 
+                 header_section_builder: HeaderSectionBuilder,
+                 about_section_builder: AboutSectionBuilder,
+                 footer_section_builder: FooterSectionBuilder,
                  projects_section_builder: ProjectsSectionBuilder,
                  skills_section_builder: SkillsSectionBuilder):
-        if (configuration == None or
-            data_loader == None or
-            portfolio_builder == None or
-            projects_section_builder == None or
-            skills_section_builder == None):
+        if (configuration is None or
+            data_loader is None or
+            portfolio_builder is None or
+            header_section_builder is None or
+            about_section_builder is None or
+            footer_section_builder is None or
+            projects_section_builder is None or
+            skills_section_builder is None):
             raise ValueError("Invalid input parameters!")
         
         self.data = {}
         self.data["CONFIG"] = configuration
         self.data_loader = data_loader
         self.portfolio_builder = portfolio_builder
+        self.header_section_builder = header_section_builder
+        self.about_section_builder = about_section_builder
+        self.footer_section_builder = footer_section_builder
         self.projects_section_builder = projects_section_builder
         self.skills_section_builder = skills_section_builder
 
@@ -76,9 +88,13 @@ class Application:
     def _build_portfolio_page(self):
         logger.debug("Build portfolio page")
         self.portfolio_builder.build(data=self.data,
+                                     header_section_builder=self.header_section_builder,
+                                     about_section_builder=self.about_section_builder,
                                      projects_section_builder=self.projects_section_builder,
-                                     skills_section_builder=self.skills_section_builder)
-        if not "HTML" in self.data:
+                                     skills_section_builder=self.skills_section_builder,
+                                     footer_section_builder=self.footer_section_builder)
+        
+        if "HTML" not in self.data:
             raise RuntimeError("No HTML generated for portfolio page")
 
         

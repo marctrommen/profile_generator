@@ -3,6 +3,10 @@
 
 from projects_section_builder import ProjectsSectionBuilder
 from skills_section_builder import SkillsSectionBuilder
+from header_section_builder import HeaderSectionBuilder
+from about_section_builder import AboutSectionBuilder
+from footer_section_builder import FooterSectionBuilder
+
 
 import logging
 logger = logging.getLogger("myapp.PortfolioBuilder")
@@ -17,9 +21,12 @@ class PortfolioBuilder:
 
 
     # -----------------------------------------------------------------------------
-    def build(self, data:dict, 
+    def build(self, data:dict,
+              header_section_builder:HeaderSectionBuilder,
+              about_section_builder:AboutSectionBuilder,
               projects_section_builder:ProjectsSectionBuilder, 
-              skills_section_builder:SkillsSectionBuilder):
+              skills_section_builder:SkillsSectionBuilder,
+              footer_section_builder:FooterSectionBuilder):
         """
         Public Method as entry point to build the portfolio from the data structure.
         Internally the main page, about section, skills section, top projects section, 
@@ -27,19 +34,65 @@ class PortfolioBuilder:
         """
         logger.debug("Build portfolio")
         if (data is None or 
+            header_section_builder is None or
+            about_section_builder is None or
             projects_section_builder is None or 
-            skills_section_builder is None):
+            skills_section_builder is None or
+            footer_section_builder is None):
             raise ValueError("Invalid input parameters!")
         
         self.data = data
         self.data["HTML"] = {}
+        self.header_section_builder = header_section_builder
+        self.about_section_builder = about_section_builder
         self.projects_section_builder = projects_section_builder
         self.skills_section_builder = skills_section_builder
+        self.footer_section_builder = footer_section_builder
 
+        self._build_header_section()
+        self._build_about_section()
+        self._build_footer_section()
         self._build_projects_sections()
         self._build_skills_section()
         self._build_main_page()
 
+
+    # -----------------------------------------------------------------------------
+    def _build_header_section(self):
+        logger.debug("Build header section")
+
+        if "HEADER_DATA" in self.data["JSON"]:
+            html_text = self.header_section_builder.build(
+                    data=self.data["JSON"]["HEADER_DATA"], 
+                    templates=self.data["TEMPLATES"]
+            )
+            self.data["HTML"]["HEADER_SECTION"] = html_text
+        
+
+    # -----------------------------------------------------------------------------
+    def _build_about_section(self):
+        logger.debug("Build about section")
+
+        if "ABOUT_DATA" in self.data["JSON"]:
+            html_text = self.about_section_builder.build(
+                    data=self.data["JSON"]["ABOUT_DATA"], 
+                    templates=self.data["TEMPLATES"]
+            )
+            self.data["HTML"]["ABOUT_SECTION"] = html_text
+        
+
+    # -----------------------------------------------------------------------------
+    def _build_footer_section(self):
+        logger.debug("Build footer section")
+
+        if "FOOTER_DATA" in self.data["JSON"]:
+            html_text = self.footer_section_builder.build(
+                    data=self.data["JSON"]["FOOTER_DATA"], 
+                    templates=self.data["TEMPLATES"],
+                    datetime=self.data["CONFIG"]["GENERATED_DATETIME_HUMAN_READABLE"]
+            )
+            self.data["HTML"]["FOOTER_SECTION"] = html_text
+        
 
     # -----------------------------------------------------------------------------
     def _build_projects_sections(self):
@@ -58,10 +111,11 @@ class PortfolioBuilder:
 
                 if html_text != "":
                     has_top_projects = True
-                    self.data["HTML"]["TOP_PROJECTS_SECTION"] = html_text
         
-        if not has_top_projects:
-            raise Exception("Top projects data is empty")
+            self.data["HTML"]["TOP_PROJECTS_SECTION"] = html_text
+        
+        #if not has_top_projects:
+        #    raise Exception("Top projects data is empty")
 
         has_all_projects = False
         if "ALL_PROJECTS_DATA" in self.data["JSON"]:
@@ -79,7 +133,7 @@ class PortfolioBuilder:
                     self.data["HTML"]["ALL_PROJECTS_SECTION"] = html_text
             
         if not has_all_projects:
-            raise Exception("Top projects data is empty")
+            raise Exception("All projects data is empty")
     
 
     # -----------------------------------------------------------------------------
@@ -108,8 +162,11 @@ class PortfolioBuilder:
     def _build_main_page(self):
         logger.debug("Build main page")
 
-        if "TOP_PROJECTS_SECTION" not in self.data["HTML"]:
-            raise Exception("Top projects section is missing")
+        if "HEADER_SECTION" not in self.data["HTML"]:
+            raise Exception("Header section is missing")
+        
+        #if "TOP_PROJECTS_SECTION" not in self.data["HTML"]:
+        #    raise Exception("Top projects section is missing")
         
         if "ALL_PROJECTS_SECTION" not in self.data["HTML"]:
             raise Exception("All projects section is missing")
@@ -117,14 +174,23 @@ class PortfolioBuilder:
         if "SKILLS_SECTION" not in self.data["HTML"]:
             raise Exception("Skills section is missing")
         
-        if "ABOUT_TEMPLATE" not in self.data["TEMPLATES"]:
+        if "ABOUT_SECTION" not in self.data["HTML"]:
             raise Exception("About section is missing")
         
+        if "FOOTER_SECTION" not in self.data["HTML"]:
+            raise Exception("Footer section is missing")
+
         snippet_paramaters = dict(
-            ABOUT_SECTION=self.data["TEMPLATES"]["ABOUT_TEMPLATE"],
+            META_TITLE=self.data["JSON"]["HEADER_DATA"]["meta_title"],
+            META_DESCRIPTION=self.data["JSON"]["HEADER_DATA"]["meta_description"],
+            META_KEYWORDS=self.data["JSON"]["HEADER_DATA"]["meta_keywords"],
+            META_AUTHOR=self.data["JSON"]["HEADER_DATA"]["meta_author"],
+            HEADER_SECTION=self.data["HTML"]["HEADER_SECTION"],
+            ABOUT_SECTION=self.data["HTML"]["ABOUT_SECTION"],
             SKILLS_SECTION=self.data["HTML"]["SKILLS_SECTION"],
             TOP_PROJECTS_SECTION=self.data["HTML"]["TOP_PROJECTS_SECTION"],
-            ALL_PROJECTS_SECTION=self.data["HTML"]["ALL_PROJECTS_SECTION"]
+            ALL_PROJECTS_SECTION=self.data["HTML"]["ALL_PROJECTS_SECTION"],
+            FOOTER_SECTION=self.data["HTML"]["FOOTER_SECTION"]
         )
 
         self.data["HTML"]["PORTFOLIO"] = self.data["TEMPLATES"]["MAIN_TEMPLATE"].format(**snippet_paramaters)

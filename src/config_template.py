@@ -40,7 +40,13 @@ def configuration():
     config["TEMPLATES_DIR"] = os.path.join( config["PROJECT_ROOT_DIR"], "html" )
     config["TEMPLATE_FILES"] = [
         ("main.html", "MAIN_TEMPLATE"),
+        ("item.html", "ITEM_TEMPLATE"),
+        ("item_list.html", "ITEM_LIST_TEMPLATE"),
         ("about_section.html", "ABOUT_TEMPLATE"),
+        ("about_section_group.html", "ABOUT_GROUP_TEMPLATE"),
+        ("about_section_slogan.html", "ABOUT_SLOGAN_TEMPLATE"),
+        ("footer_section.html", "FOOTER_TEMPLATE"),
+        ("header_section.html", "HEADER_TEMPLATE"),
         ("skills_section.html", "SKILLS_TEMPLATE"),
         ("skill_group.html", "SKILLS_GROUP_TEMPLATE"),
         ("skill_item.html", "SKILLS_GROUP_ITEM_TEMPLATE"),
@@ -58,6 +64,9 @@ def configuration():
     config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
     config["TOP_PROJECTS_NAME_LIST"] = ["profil_1"]
     config["SKILLS_JSON_FILE"] = "skills.json"
+    config["ABOUT_JSON_FILE"] = "about.json"
+    config["FOOTER_JSON_FILE"] = "footer.json"
+    config["HEADER_JSON_FILE"] = "header.json"
 
     logger.debug("global configuration done")
     return config

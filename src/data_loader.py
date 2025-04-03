@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-logger = logging.getLogger("myapp.DataLoader")
-
 import os
 import json
 from copy import deepcopy
+
+import logging
+logger = logging.getLogger("myapp.DataLoader")
 
 
 class DataLoader:
@@ -46,11 +46,17 @@ class DataLoader:
         logger.debug("Load data")
         self.data = data
         self.data["JSON"] = {}
+        self.data["JSON"]["ABOUT_DATA"] = {}
+        self.data["JSON"]["HEADER_DATA"] = {}
+        self.data["JSON"]["FOOTER_DATA"] = {}
         self.data["JSON"]["ALL_PROJECTS_DATA"] = {}
         self.data["JSON"]["TOP_PROJECTS_DATA"] = {}
         self.data["JSON"]["SKILLS_DATA"] = {}
         self.data["TEMPLATES"] = {}
         self._load_html_templates()
+        self._load_about()
+        self._load_header()
+        self._load_footer()
         self._load_projects()
         self._load_skills()
         self._deepcopy_top_projects()
@@ -67,6 +73,39 @@ class DataLoader:
 
 
     # -----------------------------------------------------------------------------
+    def _load_about(self):
+        logger.debug("Load JSON of about data")
+        file_name = os.path.join(self.data["CONFIG"]["DATA_DIR"], self.data["CONFIG"]["ABOUT_JSON_FILE"])
+        with open(file_name, 'r') as fileObject:
+            json_data = json.load(fileObject)
+            if not json_data:
+                raise RuntimeError("JSON data of about should not be empty!")
+            self.data["JSON"]["ABOUT_DATA"] = json_data
+
+
+    # -----------------------------------------------------------------------------
+    def _load_header(self):
+        logger.debug("Load JSON of header data")
+        file_name = os.path.join(self.data["CONFIG"]["DATA_DIR"], self.data["CONFIG"]["HEADER_JSON_FILE"])
+        with open(file_name, 'r') as fileObject:
+            json_data = json.load(fileObject)
+            if not json_data:
+                raise RuntimeError("JSON data of header should not be empty!")
+            self.data["JSON"]["HEADER_DATA"] = json_data
+
+
+    # -----------------------------------------------------------------------------
+    def _load_footer(self):
+        logger.debug("Load JSON of footer data")
+        file_name = os.path.join(self.data["CONFIG"]["DATA_DIR"], self.data["CONFIG"]["FOOTER_JSON_FILE"])
+        with open(file_name, 'r') as fileObject:
+            json_data = json.load(fileObject)
+            if not json_data:
+                raise RuntimeError("JSON data of footer should not be empty!")
+            self.data["JSON"]["FOOTER_DATA"] = json_data
+
+
+    # -----------------------------------------------------------------------------
     def _load_projects(self):
         logger.debug("Load JSON of all projects data")
         file_name = self.data["CONFIG"]["ALL_PROJECTS_JSON_FILE"]
@@ -74,7 +113,7 @@ class DataLoader:
         with open(file_name, 'r') as fileObject:
             json_data = json.load(fileObject)
             if not json_data:
-                raise RuntimeError("JSON data should not be empty!")
+                raise RuntimeError("JSON data of projects should not be empty!")
             self.data["JSON"]["ALL_PROJECTS_DATA"] = json_data
 
 
@@ -94,5 +133,5 @@ class DataLoader:
         with open(file_name, 'r') as fileObject:
             json_data = json.load(fileObject)
             if not json_data:
-                raise RuntimeError("JSON data should not be empty!")
+                raise RuntimeError("JSON data of skills should not be empty!")
             self.data["JSON"]["SKILLS_DATA"] = json_data
