@@ -1,9 +1,11 @@
 :root{
-    --accent-color: #d52c3a;
-    --primary-color: #1b1c1f;
-    --secondary-color: #101113;
-    --text-color: #d9d9d9;
-    --secondary-text-color: #7f8082;
+    --accent-color: rgb(248, 156, 17);
+    --primary-color: rgb(27, 28, 31);
+    --secondary-color: rgb(16, 17, 19);
+    --text-color: rgb(217, 217, 217);
+    --secondary-text-color: rgb(127, 128, 130);
+    --accent-color-opaque: rgba(248, 156, 17, 30%);
+    --secondary-color-opaque: rgba(16, 17, 19, 30%);
 }
 *{
     margin: 0;
@@ -19,6 +21,23 @@ body{
     min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--primary-color);
+}
+/*https://www.w3schools.com/howto/howto_css_fixed_menu.asp*/
+.back-top {
+    overflow: hidden;
+    background-color: var(--accent-color-opaque);
+    color: white;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    border-radius: 1000px;
+    padding: .5em 1.25em;
+    text-decoration: none;
+    transition: 200ms ease;
+    cursor: pointer;
+}
+.back-top:hover {
+    background: var(--secondary-color-opaque);
 }
 header{
     padding: 0 20px;
@@ -194,6 +213,10 @@ footer #at-symbol{
 footer h3{
     margin-top: 80px;
     font-size: clamp(1.6rem, calc(4vw + 0.5rem), 2rem);
+}
+footer p{
+    margin-top: 50px;
+    text-align: center;
 }
 footer a{
     margin-top: 5px;
