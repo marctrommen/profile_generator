@@ -1,0 +1,15 @@
+{
+    "meta_title": "Meta Title",
+    "meta_description": "Meta Description",
+    "meta_keywords" : "Meta Keywords",
+    "meta_author" : "Meta Author",
+    "header_logo": "logo.png",
+    "header_logo_alt": "Logo Alt Text",
+    "header_title": "Header Title",
+    "header_subtitle": "Header Subtitle",
+    "header_description_list": [
+        "Header Description 1",
+        "Header Description 2",
+        "Header Description 3"
+    ]
+}

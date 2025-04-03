@@ -1,0 +1,7 @@
+{
+    "mail_address" : "mail_address@domain.mail",
+    "linkedin_url" : "https://www.linkedin.com/in/username",
+    "postal_address" : "1234 Street Name, City, State, 12345",
+    "google_maps_url" : "https://www.google.com/maps/place/1234+Street+Name,+City,+State,+12345",
+    "github_url" : "https://github.com/username"
+}
