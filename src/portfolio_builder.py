@@ -98,43 +98,48 @@ class PortfolioBuilder:
     def _build_projects_sections(self):
         logger.debug("Build projects sections")
 
-        has_top_projects = False
-        if "TOP_PROJECTS_DATA" in self.data["JSON"]:
-            project_list = self.data["JSON"]["TOP_PROJECTS_DATA"]
-            html_text = ""
-            if len(project_list) > 0:
-                html_text = self.projects_section_builder.build(
-                    projects=project_list, 
-                    templates=self.data["TEMPLATES"], 
-                    heading="Meine Top 3 Projekte"
-                )
+        self.data["HTML"]["TOP_PROJECTS_SECTION"] = ""
+        self.data["HTML"]["ALL_PROJECTS_SECTION"] = ""
+        self.data["HTML"]["REFERTO_SECTION"] = ""
 
-                if html_text != "":
-                    has_top_projects = True
-        
+        if self.data["CONFIG"]["HAS_REFERTO_SECTION"]:
+            if "TOP_PROJECTS_DATA" in self.data["JSON"]:
+                project_list = self.data["JSON"]["TOP_PROJECTS_DATA"]
+                html_text = ""
+                if len(project_list) > 0:
+                    html_text = self.projects_section_builder.build(
+                        projects=project_list, 
+                        templates=self.data["TEMPLATES"], 
+                        heading="Meine Top Projekte"
+                    )
+
             self.data["HTML"]["TOP_PROJECTS_SECTION"] = html_text
-        
-        #if not has_top_projects:
-        #    raise Exception("Top projects data is empty")
 
-        has_all_projects = False
-        if "ALL_PROJECTS_DATA" in self.data["JSON"]:
-            project_list = self.data["JSON"]["ALL_PROJECTS_DATA"]
-            html_text = ""
-            if len(project_list) > 0:
-                html_text = self.projects_section_builder.build(
-                    projects=project_list, 
-                    templates=self.data["TEMPLATES"], 
-                    heading="Meine Projekte"
-                )
-
-                if html_text != "":
-                    has_all_projects = True
-                    self.data["HTML"]["ALL_PROJECTS_SECTION"] = html_text
+            self._build_referto_section()
+        else:
+            if "ALL_PROJECTS_DATA" in self.data["JSON"]:
+                project_list = self.data["JSON"]["ALL_PROJECTS_DATA"]
+                html_text = ""
+                if len(project_list) > 0:
+                    html_text = self.projects_section_builder.build(
+                        projects=project_list, 
+                        templates=self.data["TEMPLATES"], 
+                        heading="Meine Projekte"
+                    )
+                self.data["HTML"]["ALL_PROJECTS_SECTION"] = html_text
             
-        if not has_all_projects:
-            raise Exception("All projects data is empty")
-    
+
+    # -----------------------------------------------------------------------------
+    def _build_referto_section(self):
+        logger.debug("Build referto section")
+
+        snippet_paramaters = dict(
+            REFERTO_SECTION_LINK=self.data["CONFIG"]["REFERTO_SECTION_LINK"]
+        )
+
+        self.data["HTML"]["REFERTO_SECTION"] = self.data["TEMPLATES"]["REFERTO_TEMPLATE"].format(**snippet_paramaters)
+        
+
 
     # -----------------------------------------------------------------------------
     def _build_skills_section(self):
@@ -168,8 +173,8 @@ class PortfolioBuilder:
         #if "TOP_PROJECTS_SECTION" not in self.data["HTML"]:
         #    raise Exception("Top projects section is missing")
         
-        if "ALL_PROJECTS_SECTION" not in self.data["HTML"]:
-            raise Exception("All projects section is missing")
+        #if "ALL_PROJECTS_SECTION" not in self.data["HTML"]:
+        #    raise Exception("All projects section is missing")
         
         if "SKILLS_SECTION" not in self.data["HTML"]:
             raise Exception("Skills section is missing")
@@ -190,6 +195,7 @@ class PortfolioBuilder:
             SKILLS_SECTION=self.data["HTML"]["SKILLS_SECTION"],
             TOP_PROJECTS_SECTION=self.data["HTML"]["TOP_PROJECTS_SECTION"],
             ALL_PROJECTS_SECTION=self.data["HTML"]["ALL_PROJECTS_SECTION"],
+            REFERTO_SECTION=self.data["HTML"]["REFERTO_SECTION"],
             FOOTER_SECTION=self.data["HTML"]["FOOTER_SECTION"]
         )
 

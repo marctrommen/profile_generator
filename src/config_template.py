@@ -59,10 +59,24 @@ def configuration():
         ("project_item_tasks.html", "PROJECT_ITEM_TASKS_TEMPLATE"),
         ("project_item_task.html", "PROJECT_ITEM_TASK_TEMPLATE"),
         ("project_item_time_range.html", "PROJECT_ITEM_TIME_RANGE_TEMPLATE"),
-        ("project_item_tools.html", "PROJECT_ITEM_TOOLS_TEMPLATE")
+        ("project_item_tools.html", "PROJECT_ITEM_TOOLS_TEMPLATE"),
+        ("referto_section.html", "REFERTO_TEMPLATE")
     ]
-    config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
+
+    # with the flag "HAS_REFERTO_SECTION" you can enable or disable the refer to section
+    # If you want to use the "Top Projects" together with the "Refer To" section you have to set
+    # this flag to "True".
+    # The "Top Projects" section will be shown instead of the "All Projects" section.
+    # The "Top Projects" section lists only the subset of Projects out of the all projects list, which is 
+    # defined with the variable "TOP_PROJECTS_NAME_LIST".
+    # In the refer to section you can then set a Link to the Webpage which contains the list of all projects.
+    # If you set the "HAS_REFERTO_SECTION" to "False", then the All Project List will be shown and the 
+    # Top Projects list will be ignored and not shown. The Refer To Link will not shown, too.
+    config["HAS_REFERTO_SECTION"] = False
+    config["REFERTO_SECTION_LINK"] = "https://link/to/full/profile.html"
     config["TOP_PROJECTS_NAME_LIST"] = ["profil_1"]
+
+    config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
     config["SKILLS_JSON_FILE"] = "skills.json"
     config["ABOUT_JSON_FILE"] = "about.json"
     config["FOOTER_JSON_FILE"] = "footer.json"

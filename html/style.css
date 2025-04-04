@@ -133,7 +133,7 @@ header .read-more:hover{
 .skill-container ul li progress{
     accent-color: var(--accent-color);
 }
-*/
+
 #projects-section{
     padding: 100px 20px;
 }
@@ -195,6 +195,45 @@ details .text-container ul{
     margin-left: 30px;
     color: var(--secondary-text-color);
 }
+#referto-section{
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-color);
+}
+#referto-section .container{
+    width: 850px;
+    max-width: 100%;
+}
+#referto-section h2{
+    font-size: clamp(1.8rem, calc(4vw + 1rem), 3rem);
+    text-align: center;
+    margin-bottom: 60px;
+}
+#referto-section h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#referto-section p{
+    padding-bottom: 30px;
+    color: var(--primary-text-color);
+}
+#referto-section .read-more{
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 1000px;
+    padding: .5em 1.25em;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: 200ms ease;
+    cursor: pointer;
+}
+#referto-section .read-more:hover{
+    background-color: var(--secondary-color);
+}
 footer{
     background-color: var(--secondary-color);
     padding: 100px 20px;
@@ -242,6 +281,11 @@ footer a{
 
 @media(max-width: 650px){   
     header .read-more{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    #referto-section .read-more{
         display: flex;
         justify-content: center;
         margin-top: 10px;
