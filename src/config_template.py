@@ -37,6 +37,7 @@ def configuration():
     config["SRC_DIR"] = os.path.join( config["PROJECT_ROOT_DIR"], "src" )
     config["DATA_DIR"] = os.path.join( config["PROJECT_ROOT_DIR"], "data" )
     config["BUILD_OUT_DIR"] = os.path.join( config["PROJECT_ROOT_DIR"], "_www" )
+    config["BUILD_OUT_FILE"] = os.path.join( config["BUILD_OUT_DIR"], "portfolio.html" )
     config["TEMPLATES_DIR"] = os.path.join( config["PROJECT_ROOT_DIR"], "html" )
     config["TEMPLATE_FILES"] = [
         ("main.html", "MAIN_TEMPLATE"),

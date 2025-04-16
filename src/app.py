@@ -104,7 +104,7 @@ class Application:
         has_file_written = False    
         if "HTML" in self.data:
             if "PORTFOLIO" in self.data["HTML"]:
-                file_name = os.path.join(self.data["CONFIG"]["BUILD_OUT_DIR"], "portfolio.html")
+                file_name = self.data["CONFIG"]["BUILD_OUT_FILE"]
                 with open(file_name, 'w') as fileObject:
                     fileObject.write(self.data["HTML"]["PORTFOLIO"])
                     has_file_written = True
