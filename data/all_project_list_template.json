@@ -2,6 +2,7 @@
     "profil_01": {
         "employed_company": "The best employer ever",
         "project_name": "The Big Laugh",
+        "project_lable": "TBL",
         "project_branch": "Entertainment",
         "project_start_month": 6,
         "project_start_year": 2023,
@@ -44,6 +45,7 @@
     "profil_02": {
         "employed_company": "The best employer ever",
         "project_name": "The Big Laugh",
+        "project_lable": "TBL",
         "project_branch": "Entertainment",
         "project_start_month": 6,
         "project_start_year": 2023,
@@ -86,6 +88,7 @@
     "profil_03": {
         "employed_company": "The best employer ever",
         "project_name": "The Big Laugh",
+        "project_lable": "TBL",
         "project_branch": "Entertainment",
         "project_start_month": 6,
         "project_start_year": 2023,
