@@ -9,9 +9,11 @@ src/config.py
 .vscode/
 app.log
 data/about.json
+data/about__*.json
 data/all_project_list.json
 data/skills.json
+data/skills__*.json
 data/skills_backup.json
 data/footer.json
 data/header.json
-data/skills.json
+data/header__*.json
