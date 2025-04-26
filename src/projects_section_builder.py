@@ -53,6 +53,7 @@ class ProjectsSectionBuilder():
             PROJECT_COUNTER=project_counter,
             PROJECT_NAME=self.projects[project]["project_name"],
             PROJECT_DESCRIPTION=self.projects[project]["project_description"],
+            PROJECT_LABLE=self._lable(project=project),
             TIME_RANGE=self._time_range(project=project),
             PROJECT_COMPANY_CLIENT=self._company_client(project=project),
             PROJECT_BRANCH=self._branch(project=project),
@@ -64,6 +65,21 @@ class ProjectsSectionBuilder():
 
         html_text = self.templates["PROJECT_ITEM_TEMPLATE"].format(**snippet_paramaters)
         
+        return html_text
+
+
+    # -----------------------------------------------------------------------------
+    def _lable(self, project: str) -> str:
+        logger.debug("Build lable")
+        html_text = ""
+
+        if "project_lable" in self.projects[project]:
+            snippet_parameters = dict(
+                PROJECT_LABLE=self.projects[project]["project_lable"]
+            )
+            
+            html_text = self.templates["PROJECT_ITEM_PROJECT_LABLE_TEMPLATE"].format(**snippet_parameters)
+
         return html_text
 
 

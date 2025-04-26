@@ -55,6 +55,7 @@ def configuration():
         ("project_item.html", "PROJECT_ITEM_TEMPLATE"),
         ("project_item_branch.html", "PROJECT_ITEM_BRANCH_TEMPLATE"),
         ("project_item_company_client.html", "PROJECT_ITEM_COMPANY_CLIENT_TEMPLATE"),
+        ("project_item_lable.html", "PROJECT_ITEM_PROJECT_LABLE_TEMPLATE"),
         ("project_item_methods.html", "PROJECT_ITEM_METHODS_TEMPLATE"),
         ("project_item_roles.html", "PROJECT_ITEM_ROLES_TEMPLATE"),
         ("project_item_tasks.html", "PROJECT_ITEM_TASKS_TEMPLATE"),
