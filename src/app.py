@@ -55,8 +55,8 @@ class Application:
     # -----------------------------------------------------------------------------
     def run(self):
         logger.debug("run application")
-        self._clean_and_copy_static_files()
         self._load_data_from_files()
+        self._clean_and_copy_static_files()
         self._build_portfolio_page()
         self._save_portfolio_page()
 
@@ -73,7 +73,12 @@ class Application:
             shutil.copy(filepath, self.data["CONFIG"]["BUILD_OUT_DIR"])
 
         # copy image file if any exists
-        filepath = os.path.join(self.data["CONFIG"]['TEMPLATES_DIR'], 'marcus_wo_background.png')
+        filepath = os.path.join(self.data["CONFIG"]['TEMPLATES_DIR'], self.data["JSON"]["HEADER_DATA"]['header_logo'])
+        if os.path.exists(filepath):
+            shutil.copy(filepath, self.data["CONFIG"]["BUILD_OUT_DIR"])
+
+        # copy cv pdf file if any exists
+        filepath = os.path.join(self.data["CONFIG"]['TEMPLATES_DIR'], self.data["JSON"]["HEADER_DATA"]['header_cv_file'])
         if os.path.exists(filepath):
             shutil.copy(filepath, self.data["CONFIG"]["BUILD_OUT_DIR"])
 

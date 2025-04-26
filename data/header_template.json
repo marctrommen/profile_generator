@@ -11,5 +11,6 @@
         "Header Description 1",
         "Header Description 2",
         "Header Description 3"
-    ]
+    ],
+    "header_cv_file": "my_cv.pdf"
 }

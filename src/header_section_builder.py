@@ -34,7 +34,8 @@ class HeaderSectionBuilder():
             HEADER_LOGO_ALT=self.data["header_logo_alt"],
             HEADER_TITLE=self.data["header_title"],
             HEADER_SUBTITLE=self.data["header_subtitle"],
-            HEADER_ITEM_LIST=self._description_list()
+            HEADER_ITEM_LIST=self._description_list(),
+            HEADER_CV_FILE=self.data["header_cv_file"]
         )
 
         html_text = self.templates["HEADER_TEMPLATE"].format(**snippet_paramaters)
