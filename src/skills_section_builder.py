@@ -49,12 +49,21 @@ class SkillsSectionBuilder:
         html_items = []
         
         for skill in self.skill_groups[skill_group].keys():
+            skill_value = self.skill_groups[skill_group][skill]
+            if skill_value == 1:
+                template_name = "SKILLS_GROUP_ITEM_ONE_DOT_TEMPLATE"
+            elif skill_value == 2:
+                template_name = "SKILLS_GROUP_ITEM_TWO_DOTS_TEMPLATE"
+            elif skill_value == 3:
+                template_name = "SKILLS_GROUP_ITEM_THREE_DOTS_TEMPLATE"
+            else:
+                raise ValueError("Invalid skill value!")
+            
             snippet_parameters = dict(
-                SKILL_NAME=skill,
-                SKILL_VALUE=self.skill_groups[skill_group][skill]
+                SKILL_NAME=skill
             )
             
-            html_items.append(self.templates["SKILLS_GROUP_ITEM_TEMPLATE"].format(**snippet_parameters))
+            html_items.append(self.templates[template_name].format(**snippet_parameters))
 
         if len(html_items) == 0:
             return ""
