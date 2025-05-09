@@ -1,10 +1,10 @@
 {
 	"skillgroupname_1" : {
-		"skillname_1" : 60,
-		"skillname_2" : 100
+		"skillname_1" : 2,
+		"skillname_2" : 3
 	},
 	"skillgroupname_2" : {
-		"skillname" : 80,
-		"skillname" : 70
+		"skillname_1" : 3,
+		"skillname_2" : 2
 	}
 }
