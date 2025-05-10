@@ -10,7 +10,7 @@ class ProjectsSectionBuilder():
     """Documentation TO BE DONE!"""    
 
     # -----------------------------------------------------------------------------
-    def build(self, projects: dict, templates: dict, heading: str) -> str:
+    def build(self, projects: dict, templates: dict, heading: str, prologue_text: str) -> str:
         """Build the project list section of the portfolio page out of the
         projects data structure.
         
@@ -21,12 +21,13 @@ class ProjectsSectionBuilder():
         """
         logger.debug("build method started")
 
-        if (projects is None or templates is None or heading == ""):
+        if (projects is None or templates is None or heading == "" or prologue_text == ""):
             raise ValueError("Invalid input parameters!")
         
         self.projects = projects
         self.templates = templates
         self.heading = heading
+        self.prologue_text = prologue_text
 
         html_items = []
         project_counter = 0
@@ -37,6 +38,7 @@ class ProjectsSectionBuilder():
         
         snippet_paramaters = dict(
             PROJECT_LIST_HEADING=self.heading,
+            PROJECTS_PROLOGUE_TEXT=self.prologue_text,
             PROJECT_ITEM_LIST="\n".join(html_items)
         )
 

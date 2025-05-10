@@ -79,6 +79,9 @@ def configuration():
     config["HAS_REFERTO_SECTION"] = False
     config["REFERTO_SECTION_LINK"] = "https://link/to/full/profile.html"
     config["TOP_PROJECTS_NAME_LIST"] = ["profil_1"]
+    config["TOP_PROJECTS_PROLOGUE_TEXT"] = "Top Projects Prologue Text"
+    config["ALL_PROJECTS_PROLOGUE_TEXT"] = "All Projects Prologue Text"
+    config["SKILLS_PROLOGUE_TEXT"] = "Skills Prologue Text"
 
     config["ALL_PROJECTS_JSON_FILE"] = "all_project_list.json"
     config["SKILLS_JSON_FILE"] = "skills.json"

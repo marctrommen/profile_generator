@@ -114,6 +114,21 @@ header .read-more:hover{
     text-align: center;
     margin-bottom: 60px;
 }
+
+.text-item{
+    margin: 20px auto;
+    display: block;
+    width: 1000px;
+    max-width: 100%;
+    padding: 0px;
+    border-radius: 6px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.text-item p{
+    padding: 30px;
+}
+
 details{
     margin: 20px auto;
     width: 1000px;

@@ -10,7 +10,7 @@ class SkillsSectionBuilder:
     """Documentation TO BE DONE!"""
 
     # -----------------------------------------------------------------------------
-    def build(self, skill_groups: dict, templates: dict):
+    def build(self, skill_groups: dict, prologue_text: str, templates: dict):
         """Build the skills list section of the portfolio page out of the
         skills data structure.
         
@@ -21,11 +21,12 @@ class SkillsSectionBuilder:
         """
         logger.debug("build method started")
 
-        if (skill_groups == None or templates == None):
+        if (skill_groups is None or prologue_text == "" or templates is None):
             raise ValueError("Invalid input parameters!")
         
         self.skill_groups = skill_groups
         self.templates = templates
+        self.prologue_text = prologue_text
 
         html_items = []
         for skill_group in self.skill_groups.keys():
@@ -35,7 +36,8 @@ class SkillsSectionBuilder:
             return ""
 
         snippet_paramaters = dict(
-            SKILLS_GROUP_LIST="\n".join(html_items)
+            SKILLS_GROUP_LIST="\n".join(html_items),
+            SKILLS_PROLOGUE_TEXT=self.prologue_text
         )
 
         html_text = self.templates["SKILLS_TEMPLATE"].format(**snippet_paramaters)

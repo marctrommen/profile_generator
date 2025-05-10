@@ -110,7 +110,8 @@ class PortfolioBuilder:
                     html_text = self.projects_section_builder.build(
                         projects=project_list, 
                         templates=self.data["TEMPLATES"], 
-                        heading="Meine Top Projekte"
+                        heading="Meine Top Projekte",
+                        prologue_text=self.data["CONFIG"]["TOP_PROJECTS_PROLOGUE_TEXT"]
                     )
 
             self.data["HTML"]["TOP_PROJECTS_SECTION"] = html_text
@@ -124,7 +125,8 @@ class PortfolioBuilder:
                     html_text = self.projects_section_builder.build(
                         projects=project_list, 
                         templates=self.data["TEMPLATES"], 
-                        heading="Meine Projekte"
+                        heading="Meine Projekte",
+                        prologue_text=self.data["CONFIG"]["ALL_PROJECTS_PROLOGUE_TEXT"]
                     )
                 self.data["HTML"]["ALL_PROJECTS_SECTION"] = html_text
             
@@ -151,7 +153,8 @@ class PortfolioBuilder:
             html_text = ""
             if len(skill_groups.keys()) > 0:
                 html_text = self.skills_section_builder.build(
-                    skill_groups=skill_groups, 
+                    skill_groups=skill_groups,
+                    prologue_text=self.data["CONFIG"]["SKILLS_PROLOGUE_TEXT"],
                     templates=self.data["TEMPLATES"]
                 )
 
