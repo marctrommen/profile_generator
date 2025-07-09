@@ -13,8 +13,10 @@ data/about.json
 data/about__*.json
 data/all_project_list.json
 data/skills.json
+data/skills_*.json
 data/skills__*.json
 data/skills_backup.json
 data/footer.json
 data/header.json
 data/header__*.json
+data/header_*.json
